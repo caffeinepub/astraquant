@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================
+   IndiaStock AI — Dark Trading Terminal Design System
+   OKLCH raw L C H values (no oklch() wrapper)
+   ========================================================= */
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Dark trading terminal palette — always dark */
+    --background: 0.13 0.012 240;
+    --foreground: 0.93 0.015 240;
+
+    --card: 0.17 0.018 240;
+    --card-foreground: 0.93 0.015 240;
+
+    --popover: 0.19 0.02 240;
+    --popover-foreground: 0.93 0.015 240;
+
+    /* Cyan/teal primary accent */
+    --primary: 0.72 0.15 195;
+    --primary-foreground: 0.1 0.01 240;
+
+    --secondary: 0.22 0.025 240;
+    --secondary-foreground: 0.85 0.015 240;
+
+    --muted: 0.20 0.02 240;
+    --muted-foreground: 0.55 0.025 240;
+
+    --accent: 0.72 0.15 195;
+    --accent-foreground: 0.1 0.01 240;
+
+    /* Destructive/red */
+    --destructive: 0.63 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.28 0.025 240;
+    --input: 0.22 0.025 240;
+    --ring: 0.72 0.15 195;
+
+    /* Signal colors */
+    --buy: 0.72 0.18 155;
+    --buy-foreground: 0.1 0.01 155;
+    --wait: 0.78 0.16 75;
+    --wait-foreground: 0.1 0.01 75;
+    --avoid: 0.63 0.22 25;
+    --avoid-foreground: 0.98 0 0;
+
+    /* Chart colors */
+    --chart-1: 0.72 0.15 195;
+    --chart-2: 0.72 0.18 155;
+    --chart-3: 0.78 0.16 75;
+    --chart-4: 0.63 0.22 25;
+    --chart-5: 0.65 0.20 285;
+
+    /* Sidebar */
+    --sidebar: 0.15 0.015 240;
+    --sidebar-foreground: 0.85 0.015 240;
+    --sidebar-primary: 0.72 0.15 195;
+    --sidebar-primary-foreground: 0.1 0.01 240;
+    --sidebar-accent: 0.20 0.02 240;
+    --sidebar-accent-foreground: 0.85 0.015 240;
+    --sidebar-border: 0.28 0.025 240;
+    --sidebar-ring: 0.72 0.15 195;
+  }
+
+  /* Always dark — no light mode for trading terminal */
+  html {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background-image:
+      radial-gradient(ellipse at 20% 20%, oklch(0.20 0.04 240 / 0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 80%, oklch(0.18 0.03 200 / 0.3) 0%, transparent 50%);
+    min-height: 100vh;
+  }
+}
+
+/* =========================================================
+   Utility classes
+   ========================================================= */
+@layer utilities {
+  .font-mono-num {
+    font-family: "Geist Mono", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .text-buy {
+    color: oklch(var(--buy));
+  }
+
+  .text-wait {
+    color: oklch(var(--wait));
+  }
+
+  .text-avoid {
+    color: oklch(var(--avoid));
+  }
+
+  .bg-buy {
+    background-color: oklch(var(--buy));
+  }
+
+  .bg-wait {
+    background-color: oklch(var(--wait));
+  }
+
+  .bg-avoid {
+    background-color: oklch(var(--avoid));
+  }
+
+  .border-buy {
+    border-color: oklch(var(--buy));
+  }
+
+  .border-wait {
+    border-color: oklch(var(--wait));
+  }
+
+  .border-avoid {
+    border-color: oklch(var(--avoid));
+  }
+
+  .glow-buy {
+    box-shadow: 0 0 20px oklch(var(--buy) / 0.3);
+  }
+
+  .glow-wait {
+    box-shadow: 0 0 20px oklch(var(--wait) / 0.3);
+  }
+
+  .glow-avoid {
+    box-shadow: 0 0 20px oklch(var(--avoid) / 0.3);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 20px oklch(var(--primary) / 0.3);
+  }
+
+  .terminal-grid {
+    background-image:
+      linear-gradient(oklch(0.28 0.025 240 / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.28 0.025 240 / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .card-glass {
+    background: oklch(0.17 0.018 240 / 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid oklch(0.28 0.025 240 / 0.6);
+  }
+}
